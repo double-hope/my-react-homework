@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../styles/style.css';
-import BookingElement from "../BookingElement";
+import '../styles/style.css';
+import BookingElement from "./BookingElement";
 
 const BookingContent = ({bookings}) => {
     if(!bookings){
