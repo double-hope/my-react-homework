@@ -4,10 +4,11 @@ import Footer from "../components/footer/Footer";
 import BookingContent from "../components/bookingContent/BookingContent";
 
 const Bookings = () => {
+
     return (
         <>
             <Header/>
-            <BookingContent/>
+            <BookingContent bookings={JSON.parse(localStorage.getItem('bookings'))}/>
             <Footer/>
         </>
     );

@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../../styles/style.css';
+import Modal from "../UI/modal/Modal";
+
 
 const TripContent = ({trip}) => {
 
+    const [modal, setModal] = useState(false);
+
     return (
         <main className="trip-page">
+            <Modal visible={modal} setVisible={setModal} trip={trip}/>
             <h1 className="visually-hidden">Travel App</h1>
             <div className="trip">
                 <img src={trip.image} className="trip__img" alt="trip image"/>
@@ -23,7 +28,7 @@ const TripContent = ({trip}) => {
                         <span>Price</span>
                         <strong className="trip-price__value">{trip.price} $</strong>
                     </div>
-                    <button className="trip__button button">Book a trip</button>
+                    <button onClick={() => setModal(true)} className="trip__button button">Book a trip</button>
                 </div>
             </div>
         </main>

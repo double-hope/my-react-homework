@@ -7,9 +7,6 @@ import TripsFilter from "../TripsFilter";
 const MainContent = () => {
 
     const tripsData = require('../../data/trips.json');
-    const [trips, setTrips] = useState([]);
-    const [selectedSort, setSelectedSort] = useState('')
-    // setTrips(...tripsData);
 
     return (
             <main>
