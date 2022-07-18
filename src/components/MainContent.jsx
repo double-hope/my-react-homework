@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import '../../styles/style.css';
-import TripList from "../TripList";
-import {useTrips} from "../../hooks/useTrips";
-import TripsFilter from "../TripsFilter";
+import '../styles/style.css';
+import TripList from "./TripList";
+import {useTrips} from "../hooks/useTrips";
+import TripsFilter from "./TripsFilter";
 
 const MainContent = () => {
 
-    const tripsData = require('../../data/trips.json');
+    const tripsData = require('../data/trips.json');
 
     return (
             <main>

@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from "../components/header/Header";
-import Footer from "../components/footer/Footer";
-import BookingContent from "../components/bookingContent/BookingContent";
+import Header from "../components/UI/header/Header";
+import Footer from "../components/UI/footer/Footer";
+import BookingContent from "../components/BookingContent";
 
 const Bookings = () => {
 
