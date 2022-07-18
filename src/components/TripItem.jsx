@@ -1,8 +1,14 @@
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 const TripItem = (props) => {
 
+    const router = useHistory();
+
+    const click = (e) =>{
+        e.preventDefault();
+        router.push(`/trip/${props.trip.title}`);
+    }
 
     return (
         <li className="trip-card">
@@ -20,7 +26,7 @@ const TripItem = (props) => {
                     <strong className="trip-price__value">{props.trip.price} $</strong>
                 </div>
             </div>
-            <Link to="/trip" className="button">Discover a trip</Link>
+            <button onClick={click} className="button">Discover a trip</button>
         </li>
     );
 };
