@@ -6,7 +6,7 @@ const Select = ({options, selectName, defaultValue, onChange}) => {
             name={selectName}
             onChange={e => onChange(e.target.value)}
         >
-            <option value="">{defaultValue}</option>
+            <option value=''>{defaultValue}</option>
             {options.map(option=>
                 <option key={option.value} value={option.value}>
                     {option.name}
