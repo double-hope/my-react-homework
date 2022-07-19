@@ -1,6 +1,6 @@
 import React from 'react';
-import TripContent from "../components/TripContent";
-import Footer from "../components/UI/footer/Footer";
+import TripContent from '../components/TripContent';
+import Footer from '../components/UI/footer/Footer';
 import {useParams} from 'react-router-dom';
 import trips from '../data/trips.json';
 

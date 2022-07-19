@@ -183,6 +183,7 @@ select {
 .modal-content{
     background-color: var(--color-white);
     padding: 50px;
+    position: relative;
 }
 
 .modal-content input{
