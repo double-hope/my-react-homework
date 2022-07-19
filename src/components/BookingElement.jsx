@@ -8,7 +8,7 @@ const BookingElement = ({booking}) => {
         return(
             <h1 style={{textAlign: 'center'}}> No bookings yet </h1>
         )
-    } else if(!bookingInfo.id){
+    } else if(!bookingInfo.id && !bookingInfo.length){
         return(
             <h1 style={{textAlign: 'center'}}> No bookings yet </h1>
         )

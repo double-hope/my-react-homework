@@ -113,6 +113,7 @@ const TripsFilter = ({trips}) => {
 
     const change = (e) =>{
         setTripName(e.target.value);
+
         let index = 0;
         const cards = document.getElementsByClassName('trip-card');
         for(const trip of trips){
@@ -131,7 +132,12 @@ const TripsFilter = ({trips}) => {
         <form className='trips-filter__form' autoComplete='off'>
             <label className='trips-filter__search input'>
                 <span className='visually-hidden'>Search by name</span>
-                <input value={tripName} onChange={change} name='search' type='search' placeholder='search by title'/>
+                <input
+                    value={tripName}
+                    onChange={change}
+                    name='search'
+                    type='search'
+                    placeholder='search by title'/>
             </label>
             <label className='select'>
                 <span className='visually-hidden'>Search by duration</span>
