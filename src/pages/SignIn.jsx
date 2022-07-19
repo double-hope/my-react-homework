@@ -5,7 +5,6 @@ import SignInContent from '../components/SignInContent';
 const SignIn = () => {
     return (
         <>
-            <h1>feature/part-2</h1>
             <SignInContent/>
             <Footer/>
         </>
