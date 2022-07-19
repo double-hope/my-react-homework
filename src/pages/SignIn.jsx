@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from "../components/UI/footer/Footer";
-import SignInContent from "../components/SignInContent";
+import Footer from '../components/UI/footer/Footer';
+import SignInContent from '../components/SignInContent';
 
 const SignIn = () => {
     return (

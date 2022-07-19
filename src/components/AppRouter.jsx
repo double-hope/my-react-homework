@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import {privateRoutes, publicRoutes} from '../router'
-import {Route, Switch, Redirect} from "react-router-dom";
+import {Route, Switch, Redirect} from 'react-router-dom';
+import {AuthContext} from "../context";
+import Loader from "./UI/loader/Loader";
 
 const AppRouter = () => {
-    const isAuth = true;
+    const {isAuth, isLoading} = useContext(AuthContext);
+
+    if(isLoading){
+        return (
+            <Loader />
+        )
+
+    }
+
     return (
         isAuth
             ?
@@ -16,7 +26,7 @@ const AppRouter = () => {
                     exact={route.exact}
                 />
             )}
-            <Redirect to="/"/>
+            <Redirect to='/'/>
         </Switch>
             :
             <Switch>
@@ -28,7 +38,7 @@ const AppRouter = () => {
                         exact={route.exact}
                     />
                 )}
-                <Redirect to="/sign-up"/>
+                <Redirect to='/sign-in'/>
             </Switch>
     );
 };
