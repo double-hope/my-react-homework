@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Header from '../components/UI/header/Header';
 import Footer from '../components/UI/footer/Footer';
-import BookingContent from '../components/BookingContent';
+import {BookedContext} from "../context";
+import BookingContent from "../components/BookingContent";
 
 const Bookings = () => {
+
+    const {bookedTrips} = useContext(BookedContext);
 
     return (
         <>
             <Header/>
-            <BookingContent bookings={JSON.parse(localStorage.getItem('bookings'))}/>
+            <BookingContent bookings={bookedTrips}/>
             <Footer/>
         </>
     );

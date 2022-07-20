@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
+import {BookedContext} from "../../../context";
 
 const Modal = ({visible, setVisible, trip}) => {
 
     const [date, setDate] = useState('');
     const [people, setPeople] = useState(1);
+    const {bookedTrips, setBookedTrips} = useContext(BookedContext);
 
     const classes = ['modal'];
 
@@ -32,19 +34,14 @@ const Modal = ({visible, setVisible, trip}) => {
                 price: trip.price
             },
             totalPrice: trip.price * people,
-            createdAt: Date.now()
+            createdAt: new Date().toISOString()
         }
-        if(localStorage.getItem('bookings')){
-            let bookings = JSON.parse(localStorage.getItem('bookings'));
-            let array;
-            if(bookings.length)
-                array = [...bookings, booking]
-            else
-                array = [bookings, booking]
-            localStorage.setItem('bookings', JSON.stringify(array));
-        }
-        else
-            localStorage.setItem('bookings', JSON.stringify(booking));
+
+        setBookedTrips([
+            ...bookedTrips,
+            booking,
+        ])
+        console.log(bookedTrips);
 
         setVisible(false);
     }

@@ -7,8 +7,7 @@ import {AuthContext} from "../../../context";
 
 const Nav = () => {
 
-    const {isAuth, setIsAuth} = useContext(AuthContext);
-    const router = useHistory();
+    const {setIsAuth} = useContext(AuthContext);
 
     const click = (e) =>{
         e.preventDefault();

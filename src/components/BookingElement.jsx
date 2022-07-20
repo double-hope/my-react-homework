@@ -1,46 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {BookedContext} from "../context";
 
 const BookingElement = ({booking}) => {
 
-    const bookingInfo = JSON.parse(localStorage.getItem('bookings'));
+    const {bookedTrips, setBookedTrips} = useContext(BookedContext);
 
-    if(!bookingInfo.length && typeof bookingInfo !== 'object'){
-        return(
-            <h1 style={{textAlign: 'center'}}> No bookings yet </h1>
-        )
-    } else if(!bookingInfo.id && !bookingInfo.length){
+    if(!bookedTrips.length){
         return(
             <h1 style={{textAlign: 'center'}}> No bookings yet </h1>
         )
     }
 
     const remove = (e) =>{
-
-        const tripsList = document.getElementsByClassName('booking__title');
-        const bookingInfo = JSON.parse(localStorage.getItem('bookings'));
-
-        let newBookings = [];
-
-        if(!bookingInfo.length){
-            if (booking.trip.title !== bookingInfo.trip.title)
-                newBookings.push(bookingInfo);
-        }
-        else{
-            for(const book of bookingInfo){
-                if (booking.trip.title !== book.trip.title)
-                    newBookings.push(book);
-            }
-        }
-
-        if(newBookings.length) localStorage.setItem('bookings', JSON.stringify(newBookings));
-        else localStorage.removeItem('bookings');
-
-        for (const trip of tripsList) {
-            if(trip.innerHTML === booking.trip.title){
-                trip.parentElement.remove();
-            }
-        }
-
+        setBookedTrips(bookedTrips.filter(trip => trip.id !== booking.id));
     }
 
     return (

@@ -4,7 +4,7 @@ import BookingElement from './BookingElement';
 
 const BookingContent = ({bookings}) => {
 
-    if(!bookings){
+    if(!bookings.length){
         return(
             <main className='bookings-page'>
                 <h1 className='visually-hidden'>Travel App</h1>
@@ -13,10 +13,22 @@ const BookingContent = ({bookings}) => {
         )
     }
     else {
-        if(bookings.length){
-            bookings.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-        }
+        bookings.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
     }
+
+    // if(!bookings){
+    //     return(
+    //         <main className='bookings-page'>
+    //             <h1 className='visually-hidden'>Travel App</h1>
+    //             <h1 style={{textAlign: 'center'}}> No bookings yet </h1>
+    //         </main>
+    //     )
+    // }
+    // else {
+    //     if(bookings.length){
+    //         bookings.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+    //     }
+    // }
 
     return (
         <main className='bookings-page'>
