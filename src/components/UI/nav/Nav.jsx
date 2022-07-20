@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
 import icon from '../../../assets/images/briefcase.svg';
 import profileIcon from '../../../assets/images/user.svg';
-import {Link, useHistory} from 'react-router-dom';
-import '../../../styles/style.css';
+import {Link} from 'react-router-dom';
+import './style.css';
 import {AuthContext} from "../../../context";
 
 const Nav = () => {

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Select from './UI/select/Select';
+import {TripKey, TripLevel, TripDuration} from "../common/enums/enums";
 
 const TripsFilter = ({trips}) => {
 
@@ -10,13 +11,7 @@ const TripsFilter = ({trips}) => {
         let cardsCount = 0;
         const cards = document.getElementsByClassName('trip-card');
         switch (sort){
-            case '':
-                for(const card of cards){
-                    card.style.display = 'flex';
-                    cardsCount++;
-                }
-                break;
-            case '0_x_5':
+            case TripDuration.FIVE_LESS:
                 for(const trip of trips){
                     if(trip.duration > 5)
                         cards[index].style.display = 'none';
@@ -27,7 +22,7 @@ const TripsFilter = ({trips}) => {
                     index++;
                 }
                 break;
-            case '5_x_10':
+            case TripDuration.TEN_LESS:
                 for(const trip of trips){
                     if(trip.duration < 5 || trip.duration > 10)
                         cards[index].style.display = 'none';
@@ -38,7 +33,7 @@ const TripsFilter = ({trips}) => {
                     index++;
                 }
                 break;
-            case '10_x':
+            case TripDuration.TEN_MORE:
                 for(const trip of trips){
                     if(trip.duration < 10)
                         cards[index].style.display = 'none';
@@ -49,7 +44,12 @@ const TripsFilter = ({trips}) => {
                     index++;
                 }
                 break;
-
+            default:
+                for(const card of cards){
+                    card.style.display = 'flex';
+                    cardsCount++;
+                }
+                break;
         }
 
         if(!cardsCount){
@@ -63,13 +63,7 @@ const TripsFilter = ({trips}) => {
         let cardsCount = 0;
         const cards = document.getElementsByClassName('trip-card');
         switch (sort){
-            case '':
-                for(const card of cards){
-                    card.style.display = 'flex';
-                    cardsCount++;
-                }
-                break;
-            case 'easy':
+            case TripLevel.EASY:
                 for(const trip of trips){
                     if(trip.level !== 'easy')
                         cards[index].style.display = 'none';
@@ -80,7 +74,7 @@ const TripsFilter = ({trips}) => {
                     index++;
                 }
                 break;
-            case 'moderate':
+            case TripLevel.MODERATE:
                 for(const trip of trips){
                     if(trip.level !== 'moderate')
                         cards[index].style.display = 'none';
@@ -91,7 +85,7 @@ const TripsFilter = ({trips}) => {
                     index++;
                 }
                 break;
-            case 'difficult':
+            case TripLevel.DIFFICULT:
                 for(const trip of trips){
                     if(trip.level !== 'difficult')
                         cards[index].style.display = 'none';
@@ -102,7 +96,12 @@ const TripsFilter = ({trips}) => {
                     index++;
                 }
                 break;
-
+            default:
+                for(const card of cards){
+                    card.style.display = 'flex';
+                    cardsCount++;
+                }
+                break;
         }
 
         if(!cardsCount){
@@ -146,9 +145,9 @@ const TripsFilter = ({trips}) => {
                     defaultValue={'duration'}
                     selectName={'duration'}
                     options={[
-                        {value: '0_x_5', name: '< 5 days'},
-                        {value: '5_x_10', name: '< 10 days'},
-                        {value: '10_x', name: '≥ 10 days'}
+                        {value: TripDuration.FIVE_LESS, name: '< 5 days'},
+                        {value: TripDuration.TEN_LESS, name: '< 10 days'},
+                        {value: TripDuration.TEN_MORE, name: '≥ 10 days'}
                     ]}
                 />
             </label>
@@ -159,9 +158,9 @@ const TripsFilter = ({trips}) => {
                     defaultValue={'level'}
                     selectName={'level'}
                     options={[
-                        {value: 'easy', name: 'easy'},
-                        {value: 'moderate', name: 'moderate'},
-                        {value: 'difficult', name: 'difficult'}
+                        {value: TripLevel.EASY, name: 'easy'},
+                        {value: TripLevel.MODERATE, name: 'moderate'},
+                        {value: TripLevel.DIFFICULT, name: 'difficult'}
                     ]}
                 />
             </label>

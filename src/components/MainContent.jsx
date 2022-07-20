@@ -3,6 +3,8 @@ import '../styles/style.css';
 import TripList from './TripList';
 import TripsFilter from './TripsFilter';
 import Loader from "./UI/loader/Loader";
+import PropTypes from 'prop-types';
+import {tripType} from '../common/propTypes/trip/trip';
 
 const MainContent = () => {
 
@@ -34,5 +36,9 @@ const MainContent = () => {
             </main>
     );
 };
+
+// MainContent.propTypes = {
+//     trips: PropTypes.arrayOf(tripType.isRequired).isRequired,
+// };
 
 export default MainContent;
