@@ -13,7 +13,7 @@ const MainContent = () => {
     }, [])
 
     const getData = () =>{
-        const tripsData = require('../trips.json');
+        const tripsData = require('../database.json');
         setTrips(tripsData.trips);
     }
 

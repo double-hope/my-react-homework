@@ -2,7 +2,7 @@ import React from 'react';
 import TripContent from '../components/TripContent';
 import Footer from '../components/UI/footer/Footer';
 import {useParams} from 'react-router-dom';
-import trips from '../trips.json';
+import trips from '../database.json';
 
 const TripNamePage = () => {
 
