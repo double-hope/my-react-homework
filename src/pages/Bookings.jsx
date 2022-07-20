@@ -1,17 +1,17 @@
 import React, {useContext} from 'react';
 import Header from '../components/UI/header/Header';
 import Footer from '../components/UI/footer/Footer';
-import {BookedContext} from "../context";
 import BookingContent from "../components/BookingContent";
+import {useSelector} from 'react-redux';
 
 const Bookings = () => {
 
-    const {bookedTrips} = useContext(BookedContext);
+    const bookings = useSelector(state => state.bookings.bookings);
 
     return (
         <>
             <Header/>
-            <BookingContent bookings={bookedTrips}/>
+            <BookingContent bookings={bookings}/>
             <Footer/>
         </>
     );

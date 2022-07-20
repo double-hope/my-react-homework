@@ -1,18 +1,16 @@
-import React, {useContext} from 'react';
-import {BookedContext} from "../context";
+import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {removeBooking} from '../store/bookingsSlice';
 
 const BookingElement = ({booking}) => {
 
-    const {bookedTrips, setBookedTrips} = useContext(BookedContext);
+    const bookings = useSelector(state => state.bookings.bookings);
+    const dispatch = useDispatch();
 
-    if(!bookedTrips.length){
+    if(!bookings.length){
         return(
             <h1 style={{textAlign: 'center'}}> No bookings yet </h1>
         )
-    }
-
-    const remove = (e) =>{
-        setBookedTrips(bookedTrips.filter(trip => trip.id !== booking.id));
     }
 
     return (
@@ -21,7 +19,7 @@ const BookingElement = ({booking}) => {
             <span className='booking__guests'>{booking.guests} guests</span>
             <span className='booking__date'>{booking.date}</span>
             <span className='booking__total'>{booking.totalPrice} $</span>
-            <button onClick={remove} className='booking__cancel' title='Cancel booking'>
+            <button onClick={()=>dispatch(removeBooking(booking))} className='booking__cancel' title='Cancel booking'>
                 <span className='visually-hidden'>Cancel booking</span>
                 ×
             </button>

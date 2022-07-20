@@ -1,13 +1,13 @@
-import React, {useContext, useState} from 'react';
-import {BookedContext} from "../../../context";
+import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {addBooking} from '../../../store/bookingsSlice';
 
 const Modal = ({visible, setVisible, trip}) => {
 
     const [date, setDate] = useState('');
     const [people, setPeople] = useState(1);
-    const {bookedTrips, setBookedTrips} = useContext(BookedContext);
-
     const classes = ['modal'];
+    const dispatch = useDispatch();
 
     if(visible)
         classes.push('active')
@@ -37,11 +37,7 @@ const Modal = ({visible, setVisible, trip}) => {
             createdAt: new Date().toISOString()
         }
 
-        setBookedTrips([
-            ...bookedTrips,
-            booking,
-        ])
-        console.log(bookedTrips);
+        dispatch(addBooking(booking));
 
         setVisible(false);
     }

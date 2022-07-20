@@ -1,8 +1,12 @@
 import React from 'react';
 import '../styles/style.css';
 import BookingElement from './BookingElement';
+import {useDispatch} from 'react-redux';
+import {sortBookings} from '../store/bookingsSlice';
 
 const BookingContent = ({bookings}) => {
+
+    const dispatch = useDispatch();
 
     if(!bookings.length){
         return(
@@ -13,22 +17,8 @@ const BookingContent = ({bookings}) => {
         )
     }
     else {
-        bookings.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+        dispatch(sortBookings());
     }
-
-    // if(!bookings){
-    //     return(
-    //         <main className='bookings-page'>
-    //             <h1 className='visually-hidden'>Travel App</h1>
-    //             <h1 style={{textAlign: 'center'}}> No bookings yet </h1>
-    //         </main>
-    //     )
-    // }
-    // else {
-    //     if(bookings.length){
-    //         bookings.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-    //     }
-    // }
 
     return (
         <main className='bookings-page'>
