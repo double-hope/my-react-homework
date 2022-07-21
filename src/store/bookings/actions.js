@@ -1,13 +1,10 @@
 import { ActionType } from './common';
-import data from '../../database.json';
-
-const { bookings } = data;
+import { ApiPath } from '../../common/enums/enums';
 
 const fetchBookings = () => ({
-    type: ActionType.GET,
-    payload: {
-        bookings,
-    },
+    type: ActionType.FETCH_BOOKINGS,
+    payload: {},
+    callApi: `http://localhost:3001${ApiPath.BOOKINGS}`,
 });
 
 const addBooking = (booking) => ({

@@ -1,8 +1,8 @@
-import React, {useContext, useEffect} from 'react';
-import {privateRoutes, publicRoutes} from '../router'
+import React, {useContext} from 'react';
+import {privateRoutes, publicRoutes} from '../../router'
 import {Route, Switch, Redirect} from 'react-router-dom';
-import {AuthContext} from "../context";
-import Loader from "./UI/loader/Loader";
+import {AuthContext} from "../../context";
+import Loader from "../UI/loader/Loader";
 
 const AppRouter = () => {
     const {isAuth, isLoading} = useContext(AuthContext);

@@ -1,7 +1,9 @@
 import { ActionType } from './common';
+import {DataLoadStatus, DataStatus} from "../../common/enums/enums";
 
 const initialState = {
     bookings: [],
+    status: DataStatus.IDLE,
 };
 
 const reducer = (state = initialState, action) => {
@@ -12,6 +14,22 @@ const reducer = (state = initialState, action) => {
             const { bookings } = payload;
             return{
                 ...state,
+                bookings,
+            };
+        }
+
+        case `${ActionType.FETCH_BOOKINGS}${DataLoadStatus.START}`:{
+            return {
+                ...state,
+                status: DataStatus.PENDING,
+            };
+        }
+
+        case `${ActionType.FETCH_BOOKINGS}${DataLoadStatus.SUCCESS}`:{
+            const {response: bookings} = payload;
+            return {
+                ...state,
+                status: DataStatus.SUCCESS,
                 bookings,
             };
         }

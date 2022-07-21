@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import '../styles/style.css';
+import '../../styles/style.css';
 import TripList from './TripList';
-import TripsFilter from './TripsFilter';
-import Loader from './UI/loader/Loader';
+import TripsFilter from './filter/TripsFilter';
+import Loader from '../UI/loader/Loader';
 
 const MainContent = () => {
 
@@ -13,7 +13,7 @@ const MainContent = () => {
     }, [])
 
     const getData = () =>{
-        const tripsData = require('../database.json');
+        const tripsData = require('../../database.json');
         setTrips(tripsData.trips);
     }
 

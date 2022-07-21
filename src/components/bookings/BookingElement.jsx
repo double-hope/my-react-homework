@@ -1,6 +1,6 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import { deleteBooking } from '../store/bookings/actions';
+import { useDispatch } from 'react-redux';
+import { deleteBooking } from '../../store/bookings/actions';
 
 const BookingElement = ({booking, bookings}) => {
 

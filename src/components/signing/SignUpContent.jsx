@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {Link, Redirect, Route, useHistory} from 'react-router-dom';
-import '../styles/style.css';
-import {AuthContext} from "../context";
+import '../../styles/style.css';
+import {AuthContext} from "../../context";
 
 const SignUpContent = () => {
 

@@ -1,12 +1,14 @@
-import {combineReducers, createStore} from '@reduxjs/toolkit';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { combineReducers, createStore, applyMiddleware } from '@reduxjs/toolkit';
 import { bookings } from './rootReducer';
+import { callApi } from './middlewares/callApi/callApi';
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 const store = createStore(
     combineReducers({
         bookings,
     }),
-    composeWithDevTools(),
+    composeWithDevTools(applyMiddleware(callApi))
+    ,
 );
 
 export { store };
