@@ -1,10 +1,8 @@
-import {ActionType} from "./actionType";
-
-export { ActionType } from './actionType';
+import {ActionType} from './common';
 import { ENV } from '../../common/enums/enums';
 
 const fetchTrips = () => ({
-    type: ActionType.FETCH_TRIPS,
+    type: ActionType.GET,
     payload: {},
     callApi: `${ENV.API.URL}`,
 });

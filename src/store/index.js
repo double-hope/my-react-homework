@@ -1,8 +1,12 @@
-import {configureStore} from '@reduxjs/toolkit';
-import bookingsReducer from './bookingsSlice';
+import {combineReducers, createStore} from '@reduxjs/toolkit';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { bookings } from './rootReducer';
 
-export default configureStore({
-    reducer: {
-        bookings: bookingsReducer,
-    }
-});
+const store = createStore(
+    combineReducers({
+        bookings,
+    }),
+    composeWithDevTools(),
+);
+
+export { store };

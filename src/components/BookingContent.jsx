@@ -26,8 +26,8 @@ const BookingContent = ({bookings}) => {
             <ul className='bookings__list'>
                     {bookings.length
                         ? bookings.map(booking =>
-                            <BookingElement key={booking.id} booking={booking}/>)
-                        : <BookingElement key={bookings.id} booking={bookings}/>
+                            <BookingElement key={booking.id} booking={booking} bookings={bookings}/>)
+                        : <BookingElement key={bookings.id} booking={bookings} bookings={bookings}/>
                     }
             </ul>
         </main>

@@ -1,5 +1,6 @@
 const ActionType = {
-    FETCH_TRIPS: '/fetch-trips',
+    GET: '/get/',
+    GET_ID: '/get/',
 };
 
 export { ActionType };
