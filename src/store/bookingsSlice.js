@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const bookingsSlice = createSlice({
     name: 'bookings',
@@ -18,6 +18,6 @@ const bookingsSlice = createSlice({
     }
 });
 
-export const {addBooking, removeBooking, sortBookings} = bookingsSlice.actions;
+export const { addBooking, removeBooking, sortBookings } = bookingsSlice.actions;
 
 export default bookingsSlice.reducer;
