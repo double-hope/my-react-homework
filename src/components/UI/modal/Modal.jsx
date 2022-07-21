@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {addBooking} from '../../../store/bookingsSlice';
+import { addBooking } from '../../../store/bookings/actions';
 
 const Modal = ({visible, setVisible, trip}) => {
 

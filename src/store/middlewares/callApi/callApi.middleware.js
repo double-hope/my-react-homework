@@ -1,6 +1,6 @@
 import { DataLoadStatus } from '../../../common/enums/app/app';
 
-const callApi = (_store) => (next) => (action) => {
+const callApi = (store) => (next) => (action) => {
     const { callApi, type, ...rest } = action;
 
     if(!callApi)
@@ -14,6 +14,7 @@ const callApi = (_store) => (next) => (action) => {
     fetch(callApi)
         .then((res) => res.json())
         .then((data) => {
+
             next({
                 ...rest,
                 type: `${type}${DataLoadStatus.SUCCESS}`,

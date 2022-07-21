@@ -1,8 +1,14 @@
-import {configureStore} from '@reduxjs/toolkit';
-import bookingsReducer from './bookingsSlice';
+import { combineReducers, createStore, applyMiddleware } from '@reduxjs/toolkit';
+import { bookings } from './rootReducer';
+import { callApi } from './middlewares/callApi/callApi';
+import {composeWithDevTools} from 'redux-devtools-extension';
 
-export default configureStore({
-    reducer: {
-        bookings: bookingsReducer,
-    }
-});
+const store = createStore(
+    combineReducers({
+        bookings,
+    }),
+    composeWithDevTools(applyMiddleware(callApi))
+    ,
+);
+
+export { store };

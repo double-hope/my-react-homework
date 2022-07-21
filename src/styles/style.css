@@ -91,6 +91,13 @@ select {
     clip-path: inset(50%);
 }
 
+#root {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+}
+
 /* components */
 
 /* input */

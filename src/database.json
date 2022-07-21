@@ -69,6 +69,7 @@
       "userId": "iosjfsejfpj"
     }
   ],
+
   "bookings": [
     {
       "id": "73b7df68-62f6-4a5f-9c87-f971637ac7a0",
@@ -111,20 +112,6 @@
       },
       "totalPrice": 2145,
       "createdAt": "2022-05-22T17:44:56.660Z"
-    },
-    {
-      "id": "50f6bc2e-808d-48ed-970e-4acde5d7e723",
-      "userId": "1dd97a12-848f-4a1d-8a7d-34a2132fca94",
-      "tripId": "6417f33c-31e0-444a-abac-cd0c1f8e48d0",
-      "guests": 2,
-      "date": "2022-11-22T14:37:00.049Z",
-      "trip": {
-        "title": "Spitsbergen",
-        "duration": 11,
-        "price": 3495
-      },
-      "totalPrice": 6990,
-      "createdAt": "2022-05-22T17:45:41.982Z"
     }
   ]
 

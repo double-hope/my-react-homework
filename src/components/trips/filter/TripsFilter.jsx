@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import Select from './UI/select/Select';
-import {TripKey, TripLevel, TripDuration} from "../common/enums/enums";
+import Select from '../../UI/select/Select';
+import {TripKey, TripLevel, TripDuration} from "../../../common/enums/enums";
 
 const TripsFilter = ({trips}) => {
 

@@ -1,0 +1,1 @@
+export { reducer as bookings } from './bookings/reducer'

@@ -1,12 +1,8 @@
 import React from 'react';
-import '../styles/style.css';
+import '../../styles/style.css';
 import BookingElement from './BookingElement';
-import {useDispatch} from 'react-redux';
-import {sortBookings} from '../store/bookingsSlice';
 
 const BookingContent = ({bookings}) => {
-
-    const dispatch = useDispatch();
 
     if(!bookings.length){
         return(
@@ -17,7 +13,7 @@ const BookingContent = ({bookings}) => {
         )
     }
     else {
-        dispatch(sortBookings());
+        bookings = bookings.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
     }
 
     return (
@@ -26,8 +22,8 @@ const BookingContent = ({bookings}) => {
             <ul className='bookings__list'>
                     {bookings.length
                         ? bookings.map(booking =>
-                            <BookingElement key={booking.id} booking={booking}/>)
-                        : <BookingElement key={bookings.id} booking={bookings}/>
+                            <BookingElement key={booking.id} booking={booking} bookings={bookings}/>)
+                        : <BookingElement key={bookings.id} booking={bookings} bookings={bookings}/>
                     }
             </ul>
         </main>

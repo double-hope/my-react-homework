@@ -1,6 +1,6 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-import {tripType} from "../common/propTypes/propTypes";
+import {tripType} from "../../common/propTypes/propTypes";
 
 const TripItem = ({trip}) => {
 

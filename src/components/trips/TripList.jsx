@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TripItem from './TripItem';
-import {tripType} from '../common/propTypes/trip/trip';
+import {tripType} from '../../common/propTypes/trip/trip';
 
 const TripList = ({trips}) => {
 

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import '../styles/style.css';
-import Modal from './UI/modal/Modal';
+import '../../styles/style.css';
+import Modal from '../UI/modal/Modal';
 
 
 const TripContent = ({trip}) => {

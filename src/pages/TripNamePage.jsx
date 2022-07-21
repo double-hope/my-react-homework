@@ -1,5 +1,5 @@
 import React from 'react';
-import TripContent from '../components/TripContent';
+import TripContent from '../components/trips/TripContent';
 import Footer from '../components/UI/footer/Footer';
 import {useParams} from 'react-router-dom';
 import trips from '../database.json';
