@@ -14,6 +14,10 @@ const Modal = ({visible, setVisible, trip}) => {
         classes.push('active')
 
     const createBooking = () => {
+        // if(!date){
+        //     alert('Choose date');
+        //     return;
+        // }
         const booking = {
             id: idGenerator(),
             userId: idGenerator(),

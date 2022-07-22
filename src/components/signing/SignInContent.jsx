@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../store/users/actions";
 import { DataStatus } from "../../common/enums/app/dataStatusEnum";
 import Loader from "../UI/loader/Loader";
+import {addBooking} from "../../store/bookings/actions";
 
 const SignInContent = () => {
 
@@ -37,12 +38,21 @@ const SignInContent = () => {
     const check = (event) =>{
         event.preventDefault();
 
+        if(!users){
+            alert('You are not register, try to sign up');
+            return;
+        }
+
+
         for (const user of users) {
 
             if(user.userMail === mail){
                 if(user.userPassword === password){
                     setIsAuth(true);
-                    localStorage.setItem('user', JSON.stringify(user))
+                    user.auth = "true";
+                    for (const trip of user.userTrips) {
+                        dispatch(addBooking(trip));
+                    }
                     localStorage.setItem('auth', 'true');
                     return;
                 }

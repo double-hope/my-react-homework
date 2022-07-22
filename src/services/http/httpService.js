@@ -30,6 +30,10 @@ class Http {
     _checkStatus(response) {
         const { ok: isOk, status, statusText } = response;
 
+        if( status === 401){
+            console.log('log-out');
+        }
+
         if (!isOk) {
             throw new Error(`${status}: ${statusText}`);
         }

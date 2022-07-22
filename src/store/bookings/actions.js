@@ -46,7 +46,7 @@ const addBooking = (payload) => async (dispatch, _getStore, { bookingsService })
 
 const deleteBooking = (booking) => async (dispatch, _getStore, { bookingsService }) => {
     try{
-
+        console.log(booking)
         await bookingsService.deleteBooking(booking.id);
         dispatch({
             type: ActionType.DELETE,

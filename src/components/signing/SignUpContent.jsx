@@ -63,6 +63,7 @@ const SignUpContent = () => {
             userMail: mail,
             userPassword: password,
             userId: idGenerator(),
+            auth: true,
             userTrips: [],
         }
 

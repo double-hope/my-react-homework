@@ -22,7 +22,6 @@ class Bookings {
     }
 
     deleteBooking(id) {
-
         return this._http.load(this._getUrl(id), {
             method: HttpMethod.DELETE,
         });

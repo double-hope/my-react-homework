@@ -13,7 +13,6 @@ const TripNamePage = () => {
             if(trip.id === id.id){
                 return trip;
             }
-
         }
     }
 

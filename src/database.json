@@ -61,31 +61,6 @@
       "createdAt": "2022-05-22T17:14:38.147Z"
     }
   ],
-  "users": [
-    {
-      "userName": "Nadia",
-      "userMail": "nadia.prohorchuk@gmail.com",
-      "userPassword": "aasfsfsdfs",
-      "userId": "0e7b95a9-7f7f-c195-7fb9-df36c16520d4",
-      "userTrips": [],
-      "id": 1
-    },
-    {
-      "userName": "fuyfuygf",
-      "userMail": "asd@gmail.com",
-      "userPassword": "yhghjvbhjbkj",
-      "userId": "64ce7834-a0ef-891f-a4a5-7595c5155e1b",
-      "userTrips": [],
-      "id": 2
-    },
-    {
-      "userName": "JFKDJLSF",
-      "userMail": "grgrgrggr@gmail.com",
-      "userPassword": "gheorig",
-      "userId": "3ca69011-d023-95cb-7561-2a0c7cbe8c5e",
-      "userTrips": [],
-      "id": 3
-    }
-  ],
+  "users": [],
   "bookings": []
 }

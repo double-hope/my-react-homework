@@ -9,9 +9,9 @@ import Loader from '../components/UI/loader/Loader';
 
 const Bookings = () => {
 
-    const { bookings, status } = useSelector(({ bookings }) => ({
+    const { bookings, bookingsStatus } = useSelector(({ bookings }) => ({
             bookings: bookings.bookings,
-            status: bookings.status,
+            bookingsStatus: bookings.bookingsStatus,
     }));
 
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Bookings = () => {
         dispatch(fetchBookings());
     }, [dispatch]);
 
-    if(status === DataStatus.PENDING)
+    if(bookingsStatus === DataStatus.PENDING)
         return (
             <>
                 <Header/>
