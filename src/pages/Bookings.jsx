@@ -20,7 +20,7 @@ const Bookings = () => {
         dispatch(fetchBookings());
     }, [dispatch]);
 
-    if(status !== DataStatus.SUCCESS)
+    if(status === DataStatus.PENDING)
         return (
             <>
                 <Header/>

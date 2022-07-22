@@ -1,7 +1,7 @@
-const FilterKeyEnum = {
+const FilterKey = {
     SEARCH: 'search',
     DURATION: 'duration',
     LEVEL: 'level',
 };
 
-export { FilterKeyEnum };
+export { FilterKey };

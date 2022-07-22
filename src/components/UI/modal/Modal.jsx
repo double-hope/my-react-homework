@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import { addBooking } from '../../../store/bookings/actions';
+import { idGenerator } from '../../../helpers/helpers';
 
 const Modal = ({visible, setVisible, trip}) => {
 
@@ -11,15 +12,6 @@ const Modal = ({visible, setVisible, trip}) => {
 
     if(visible)
         classes.push('active')
-
-    let idGenerator = () => {
-        let s4 = () => {
-            return Math.floor((1 + Math.random()) * 0x10000)
-                .toString(16)
-                .substring(1);
-        }
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-    }
 
     const createBooking = () => {
         const booking = {

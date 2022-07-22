@@ -1,3 +1,3 @@
-export { DataStatus } from './dataStatus';
-export { DataLoadStatus } from './dataLoadStatus';
-export { ENV } from './env';
+export { DataStatus } from './dataStatusEnum';
+export { DataLoadStatus } from './dataLoadStatusEnum';
+export { Env } from './envEnum';

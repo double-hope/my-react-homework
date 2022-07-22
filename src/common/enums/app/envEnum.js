@@ -1,9 +1,9 @@
 const { REACT_APP_SERVER_URL } = process.env;
 
-const ENV = {
+const Env = {
     API: {
         URL: REACT_APP_SERVER_URL,
     },
 };
 
-export { ENV };
+export { Env };

@@ -1,1 +1,1 @@
-export { FilterKeyEnum } from './filterKeyEnum'
+export { FilterKey } from './filterKeyEnum'

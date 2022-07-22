@@ -6,11 +6,11 @@ import trips from '../database.json';
 
 const TripNamePage = () => {
 
-    const title = useParams();
+    const id = useParams();
 
-    function tripByTitle(){
+    function tripById(){
         for(const trip of trips.trips){
-            if(trip.title === title.title){
+            if(trip.id === id.id){
                 return trip;
             }
 
@@ -19,7 +19,7 @@ const TripNamePage = () => {
 
     return (
         <>
-            <TripContent trip={tripByTitle()}/>
+            <TripContent trip={tripById()}/>
             <Footer/>
         </>
     );

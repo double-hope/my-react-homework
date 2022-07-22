@@ -1,7 +1,12 @@
-import React, {useContext, useState} from 'react';
-import {Link, Redirect, Route, useHistory} from 'react-router-dom';
-import '../../styles/style.css';
+import React, {useContext, useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
+import '../../assets/styles/style.css';
 import {AuthContext} from "../../context";
+import {useDispatch, useSelector} from "react-redux";
+import {addUser, getUsers} from "../../store/users/actions";
+import {DataStatus} from "../../common/enums/app/dataStatusEnum";
+import Loader from "../UI/loader/Loader";
+import { idGenerator } from '../../helpers/helpers';
 
 const SignUpContent = () => {
 
@@ -11,45 +16,60 @@ const SignUpContent = () => {
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
 
+    const { users, status } = useSelector(({ users }) => ({
+        users: users.users,
+        status: users.status,
+    }));
+
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(getUsers());
+    }, [dispatch]);
+
+    if(status === DataStatus.PENDING)
+        return (
+            <>
+                <main style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
+                    <Loader/>
+                </main>
+            </>
+
+        );
+
+
     const createUser = event =>{
 
         event.preventDefault();
 
+        for (const user of users) {
+            if(user.userMail === mail){
+                alert('User with this mail is already exists, try to sign in');
+                return;
+            }
+        }
+
+        if(password.length <= 3){
+            alert('Your password is too short');
+            return;
+        }
+        if(password.length >= 20){
+            alert('Your password is too long');
+            return;
+        }
+
         const user = {
-            name: name,
-            email: mail,
-            password: password
+            userName: name,
+            userMail: mail,
+            userPassword: password,
+            userId: idGenerator(),
+            userTrips: [],
         }
 
-        if(localStorage.getItem('users')){
-            let users = JSON.parse(localStorage.getItem('users'));
-            let array;
+        dispatch(addUser(user));
 
-            if(users.length){
-                for(const userInfo of users){
-                    if(userInfo.email === user.email){
-                        alert('User with this mail is already exists, try to sign in');
-                        return;
-                    }
-                }
-                array = [...users, user]
-            }
-            else{
-                if(users.email === user.email){
-                    alert('User with this mail is already exists, try to sign in');
-                    return;
-                }
-                array = [users, user]
-            }
-            setIsAuth(true);
-            localStorage.setItem('auth', 'true');
-            localStorage.setItem('users', JSON.stringify(array));
-        }
-        else{
-            setIsAuth(true);
-            localStorage.setItem('auth', 'true');
-            localStorage.setItem('users', JSON.stringify(user));
-        }
+        setIsAuth(true);
+        localStorage.setItem('auth', 'true');
     }
 
     return (
