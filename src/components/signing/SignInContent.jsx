@@ -38,11 +38,10 @@ const SignInContent = () => {
     const check = (event) =>{
         event.preventDefault();
 
-        if(!users){
+        if(!users || !users.length){
             alert('You are not register, try to sign up');
             return;
         }
-
 
         for (const user of users) {
 

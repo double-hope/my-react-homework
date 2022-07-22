@@ -6,9 +6,9 @@ import './style.css';
 import {AuthContext} from "../../../context";
 import {useDispatch, useSelector} from "react-redux";
 import {getUsers} from "../../../store/users/actions";
-import { deleteBooking, fetchBookings } from "../../../store/bookings/actions";
+import { fetchBookings } from "../../../store/bookings/actions";
 import {DataStatus} from "../../../common/enums/enums";
-import Loader from "../loader/Loader";
+import Loader from '../loader/Loader';
 
 const Nav = () => {
 
@@ -26,10 +26,20 @@ const Nav = () => {
 
     const dispatch = useDispatch();
 
+    let user;
+
+    useEffect(()=>{
+        dispatch(getUsers());
+    }, [dispatch]);
+
+    for (const u of users) {
+        console.log(users)
+        if(u.auth === true)
+            user = u;
+    }
 
     const click = (e) =>{
         e.preventDefault();
-        dispatch(getUsers());
         dispatch(fetchBookings());
 
         if(status === DataStatus.PENDING || bookingsStatus === DataStatus.PENDING){
@@ -42,13 +52,11 @@ const Nav = () => {
 
             );
         } else {
-            console.log(users)
             for (const user of users) {
 
-                if(user.auth === "true"){
+                if(user.auth === true){
                     user.userTrips = bookings;
-                    dispatch(deleteBooking(bookings[0]))
-                    user.auth = "false";
+                    user.auth = false;
                 }
             }
 
@@ -56,8 +64,6 @@ const Nav = () => {
             setIsAuth(false);
         }
     }
-
-
 
     return (
         <nav className='header__nav'>
@@ -73,7 +79,7 @@ const Nav = () => {
                         <span className='visually-hidden'>Profile</span>
                         <img src={profileIcon} alt='profile icon'/>
                         <ul className='profile-nav__list'>
-                            <li className='profile-nav__item profile-nav__username'>John Doe</li>
+                            <li className='profile-nav__item profile-nav__username'>{user? user.userName : 'Unknown'}</li>
                             <li className='profile-nav__item'>
                                 <button onClick={click} className='profile-nav__sign-out button'>Sign Out</button>
                             </li>
