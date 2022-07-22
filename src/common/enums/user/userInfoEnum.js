@@ -1,8 +1,9 @@
-const userInfo = {
+const UserInfo = {
     NAME: 'name',
     EMAIL: 'email',
     PASSWORD: 'password',
     TOKEN: 'token',
+    TRIPS_$IDS: [],
 }
 
-export { userInfo };
+export { UserInfo };

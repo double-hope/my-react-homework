@@ -1,66 +1,57 @@
-import React, {useContext, useState} from 'react';
-import {Link, useHistory} from 'react-router-dom';
-import '../../styles/style.css';
-import {AuthContext} from "../../context";
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../../assets/styles/style.css';
+import { AuthContext } from "../../context";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../../store/users/actions";
+import { DataStatus } from "../../common/enums/app/dataStatusEnum";
+import Loader from "../UI/loader/Loader";
 
 const SignInContent = () => {
 
     const {isAuth, setIsAuth} = useContext(AuthContext);
-
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
 
-    const check = event =>{
+    const { users, status } = useSelector(({ users }) => ({
+        users: users.users,
+        status: users.status,
+    }));
 
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(getUsers());
+    }, [dispatch]);
+
+    if(status === DataStatus.PENDING)
+        return (
+            <>
+                <main style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
+                    <Loader/>
+                </main>
+            </>
+
+        );
+
+    const check = (event) =>{
         event.preventDefault();
-        if(password.length < 3){
-            alert('your password is too short');
-            return;
 
-        }
-        if(password.length > 20){
-            alert('your password is too long');
-            return;
-        }
+        for (const user of users) {
 
-        const user = {
-            email: mail,
-            password: password
-        }
-
-        if(localStorage.getItem('users')){
-            let users = JSON.parse(localStorage.getItem('users'));
-            if(users.length){
-                for(const userInfo of users){
-                    if(userInfo.email === user.email && userInfo.password === user.password){
-                        setIsAuth(true);
-                        localStorage.setItem('auth', 'true');
-                        return;
-                    }
-                    else if(userInfo.email === user.email || userInfo.password === user.password){
-                        alert('You\'ve entered incorrect mail or password, try again');
-                    }
-                    else{
-                        alert('You are not register, try to sign up');
-                    }
-                }
-            }
-            else{
-                if(users.email === user.email && users.password === user.password){
-                    localStorage.setItem('auth', 'true');
+            if(user.userMail === mail){
+                if(user.userPassword === password){
                     setIsAuth(true);
-                }
-                else if(users.email === user.email || users.password === user.password){
-                    alert('You\'ve entered incorrect mail or password, try again');
+                    localStorage.setItem('user', JSON.stringify(user))
+                    localStorage.setItem('auth', 'true');
+                    return;
                 }
                 else{
-                    alert('You are not register, try to sign up');
+                    alert('You\'ve entered incorrect mail or password, try again');
                 }
             }
-
-        }
-        else
             alert('You are not register, try to sign up');
+        }
     }
 
     return (

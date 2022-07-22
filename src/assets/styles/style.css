@@ -138,7 +138,7 @@ select {
     padding: 10px 40px 10px 15px;
     font-size: var(--font-size-300);
     background-color: var(--color-white);
-    background-image: url('../assets/images/arrow-down.svg');
+    background-image: url('../images/arrow-down.svg');
     background-repeat: no-repeat;
     background-position: right 15px top 50%;
     background-size: 15px;
@@ -230,7 +230,7 @@ select {
 .trip-info__duration {
     min-width: 120px;
     padding-left: 25px;
-    background-image: url('../assets/images/calendar.svg');
+    background-image: url('../images/calendar.svg');
     background-repeat: no-repeat;
     background-position: 0 50%;
     background-size: 15px;
@@ -325,7 +325,7 @@ select {
 .trips-filter__search input {
     padding-left: 50px;
     background-color: var(--color-white);
-    background-image: url('../assets/images/search.svg');
+    background-image: url('../images/search.svg');
     background-repeat: no-repeat;
     background-position: 15px 50%;
     background-size: 22px;

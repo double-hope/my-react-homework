@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import { TripKey, userInfo } from '../../enums/enums';
+import { TripKey, UserInfo } from '../../enums/enums';
 
 const createTripType = PropTypes.exact({
     [TripKey.ID]: PropTypes.string.isRequired,
-    [TripKey.USER_ID]: PropTypes.oneOf(Object.values(userInfo)).isRequired,
+    [TripKey.USER_ID]: PropTypes.oneOf(Object.values(UserInfo)).isRequired,
     [TripKey.TRIP_ID]: PropTypes.string.isRequired,
     [TripKey.GUESTS]: PropTypes.number.isRequired,
     [TripKey.DATE]: PropTypes.string.isRequired,

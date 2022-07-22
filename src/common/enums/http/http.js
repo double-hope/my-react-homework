@@ -1,1 +1,2 @@
-export { HttpMethodEnum } from './httpMethodEnum';
+export { HttpMethod } from './httpMethodEnum';
+export { HttpHeader } from './httpHeaderEnum'

@@ -1,21 +1,35 @@
 import React, {useEffect, useState} from 'react';
-import '../../styles/style.css';
+import '../../assets/styles/style.css';
 import TripList from './TripList';
 import TripsFilter from './filter/TripsFilter';
 import Loader from '../UI/loader/Loader';
+import {useDispatch, useSelector} from "react-redux";
+import {fetchTrips} from '../../store/trips/actions';
+import {DataStatus} from "../../common/enums/app/dataStatusEnum";
 
 const MainContent = () => {
 
-    const [trips, setTrips] = useState([]);
+    const { trips, status } = useSelector(({ trips }) => ({
+        trips: trips.trips,
+        status: trips.status,
+    }));
 
-    useEffect(() =>{
-        getData();
-    }, [])
+    const dispatch = useDispatch();
 
-    const getData = () =>{
-        const tripsData = require('../../database.json');
-        setTrips(tripsData.trips);
-    }
+    useEffect(()=>{
+        dispatch(fetchTrips());
+    }, [dispatch]);
+
+    if(status === DataStatus.PENDING)
+        return (
+            <>
+                <main style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
+                    <Loader/>
+                </main>
+            </>
+
+        );
+
 
     return (
             <main>

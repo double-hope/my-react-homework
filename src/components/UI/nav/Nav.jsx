@@ -11,6 +11,7 @@ const Nav = () => {
 
     const click = (e) =>{
         e.preventDefault();
+        localStorage.removeItem('user');
         localStorage.removeItem('auth');
         setIsAuth(false);
     }

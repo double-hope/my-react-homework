@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../../styles/style.css';
+import '../../assets/styles/style.css';
 import Modal from '../UI/modal/Modal';
 
 

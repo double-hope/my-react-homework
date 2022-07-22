@@ -1,6 +1,7 @@
-export { HttpMethodEnum } from './http/http';
-export { FilterKeyEnum } from './filter/filter';
+export { HttpMethod, HttpHeader } from './http/http';
+export { FilterKey } from './filter/filter';
 export { TripKey, TripLevel, TripDuration } from './trip/trip';
-export { userInfo } from './user/user';
-export { DataStatus, DataLoadStatus, ENV } from './app/app';
+export { UserInfo } from './user/user';
+export { DataStatus, DataLoadStatus, Env } from './app/app';
 export { ApiPath } from './api/api';
+export { ContentType } from './file/file';

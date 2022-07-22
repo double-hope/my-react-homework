@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/style.css';
+import '../../assets/styles/style.css';
 import BookingElement from './BookingElement';
 
 const BookingContent = ({bookings}) => {

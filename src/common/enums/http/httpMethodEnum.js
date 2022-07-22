@@ -1,4 +1,4 @@
-const HttpMethodEnum = {
+const HttpMethod = {
     GET: 'GET',
     POST: 'POST',
     PUT: 'PUT',
@@ -6,4 +6,4 @@ const HttpMethodEnum = {
     DELETE: 'DELETE',
 };
 
-export { HttpMethodEnum };
+export { HttpMethod };

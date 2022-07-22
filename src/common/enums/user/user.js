@@ -1,1 +1,1 @@
-export { userInfo } from './userInfo';
+export { UserInfo } from './userInfoEnum';

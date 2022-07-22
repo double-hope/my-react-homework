@@ -8,7 +8,7 @@ const TripItem = ({trip}) => {
 
     const click = (e) =>{
         e.preventDefault();
-        router.push(`/trip/${trip.title}`);
+        router.push(`/trip/${trip.id}`);
     }
 
     return (
