@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../components/UI/footer/Footer';
-import SignUpContent from '../components/SignUpContent';
+import SignUpContent from '../components/signing/SignUpContent';
 
 const SignUp = () => {
     return (

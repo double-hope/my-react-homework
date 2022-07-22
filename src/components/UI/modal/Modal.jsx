@@ -1,25 +1,23 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import { addBooking } from '../../../store/bookings/actions';
+import { idGenerator } from '../../../helpers/helpers';
 
 const Modal = ({visible, setVisible, trip}) => {
 
     const [date, setDate] = useState('');
     const [people, setPeople] = useState(1);
-
     const classes = ['modal'];
+    const dispatch = useDispatch();
 
     if(visible)
         classes.push('active')
 
-    let idGenerator = () => {
-        let s4 = () => {
-            return Math.floor((1 + Math.random()) * 0x10000)
-                .toString(16)
-                .substring(1);
-        }
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-    }
-
     const createBooking = () => {
+        // if(!date){
+        //     alert('Choose date');
+        //     return;
+        // }
         const booking = {
             id: idGenerator(),
             userId: idGenerator(),
@@ -32,19 +30,10 @@ const Modal = ({visible, setVisible, trip}) => {
                 price: trip.price
             },
             totalPrice: trip.price * people,
-            createdAt: Date.now()
+            createdAt: new Date().toISOString()
         }
-        if(localStorage.getItem('bookings')){
-            let bookings = JSON.parse(localStorage.getItem('bookings'));
-            let array;
-            if(bookings.length)
-                array = [...bookings, booking]
-            else
-                array = [bookings, booking]
-            localStorage.setItem('bookings', JSON.stringify(array));
-        }
-        else
-            localStorage.setItem('bookings', JSON.stringify(booking));
+
+        dispatch(addBooking(booking));
 
         setVisible(false);
     }
