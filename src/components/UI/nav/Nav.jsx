@@ -33,7 +33,6 @@ const Nav = () => {
     }, [dispatch]);
 
     for (const u of users) {
-        console.log(users)
         if(u.auth === true)
             user = u;
     }
