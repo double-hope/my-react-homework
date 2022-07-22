@@ -1,19 +1,67 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import icon from '../../../assets/images/briefcase.svg';
 import profileIcon from '../../../assets/images/user.svg';
-import {Link, useHistory} from 'react-router-dom';
-import '../../../styles/style.css';
+import {Link} from 'react-router-dom';
+import './style.css';
 import {AuthContext} from "../../../context";
+import {useDispatch, useSelector} from "react-redux";
+import {getUsers} from "../../../store/users/actions";
+import { fetchBookings } from "../../../store/bookings/actions";
+import {DataStatus} from "../../../common/enums/enums";
+import Loader from '../loader/Loader';
 
 const Nav = () => {
 
-    const {isAuth, setIsAuth} = useContext(AuthContext);
-    const router = useHistory();
+    const { setIsAuth } = useContext(AuthContext);
+
+    const { users, status } = useSelector(({ users }) => ({
+        users: users.users,
+        status: users.status,
+    }));
+
+    const { bookings, bookingsStatus } = useSelector(({ bookings }) => ({
+        bookings: bookings.bookings,
+        bookingsStatus: bookings.bookingsStatus,
+    }));
+
+    const dispatch = useDispatch();
+
+    let user;
+
+    useEffect(()=>{
+        dispatch(getUsers());
+    }, [dispatch]);
+
+    for (const u of users) {
+        if(u.auth === true)
+            user = u;
+    }
 
     const click = (e) =>{
         e.preventDefault();
-        localStorage.removeItem('auth');
-        setIsAuth(false);
+        dispatch(fetchBookings());
+
+        if(status === DataStatus.PENDING || bookingsStatus === DataStatus.PENDING){
+            return (
+                <>
+                    <main className='bookings-page'>
+                        <Loader/>
+                    </main>
+                </>
+
+            );
+        } else {
+            for (const user of users) {
+
+                if(user.auth === true){
+                    user.userTrips = bookings;
+                    user.auth = false;
+                }
+            }
+
+            localStorage.removeItem('auth');
+            setIsAuth(false);
+        }
     }
 
     return (
@@ -30,7 +78,7 @@ const Nav = () => {
                         <span className='visually-hidden'>Profile</span>
                         <img src={profileIcon} alt='profile icon'/>
                         <ul className='profile-nav__list'>
-                            <li className='profile-nav__item profile-nav__username'>John Doe</li>
+                            <li className='profile-nav__item profile-nav__username'>{user? user.userName : 'Unknown'}</li>
                             <li className='profile-nav__item'>
                                 <button onClick={click} className='profile-nav__sign-out button'>Sign Out</button>
                             </li>
